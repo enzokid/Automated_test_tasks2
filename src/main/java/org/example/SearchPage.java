@@ -28,7 +28,7 @@ public class SearchPage {
     }
 
     public void getSearchResults(){
-        searchResults.shouldHave(CollectionCondition.size(10));
+        searchResults.shouldHave(CollectionCondition.sizeGreaterThanOrEqual(1));
     }
 
     public void clickSearchResult(){
