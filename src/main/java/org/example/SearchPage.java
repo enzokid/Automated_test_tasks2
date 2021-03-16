@@ -28,11 +28,12 @@ public class SearchPage {
     }
 
     public void getSearchResults(){
-        searchResults.shouldHave(CollectionCondition.sizeGreaterThanOrEqual(1));
+        searchResults.shouldHave(CollectionCondition.sizeGreaterThanOrEqual(1)).filterBy(text("Selenide: concise UI Tests in Java")).first().click();
+
     }
 
     public void clickSearchResult(){
-        searchResult.shouldHave(text("Selenide: concise UI Tests in Java"));
+        searchResult.click();
     }
 
 }
