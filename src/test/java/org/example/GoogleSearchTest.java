@@ -14,6 +14,6 @@ public class GoogleSearchTest extends BaseClass{
         searchPage.setSearchField("купить кофемашину bork c804");
         searchPage.checkNumPage();
         searchPage.checkSearchResult();
-        
+
     }
 }
