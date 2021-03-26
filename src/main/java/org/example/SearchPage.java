@@ -1,21 +1,26 @@
 package org.example;
 
+
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.SelenideTargetLocator;
+import com.codeborne.selenide.collections.SizeGreaterThanOrEqual;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.text;
+import java.nio.file.LinkOption;
+
+import static com.codeborne.selenide.CollectionCondition.texts;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class SearchPage {
 
     private SelenideElement searchField = $(By.name("q"));
-    private SelenideElement searchResult =  $("#res div.g");
-    private ElementsCollection searchResults = $$("#res div.g");
     private SelenideElement acceptCookies = $("#introAgreeButton span.RveJvd.snByac");
+    private SelenideElement numPage = $("span#xjs");
 
+    private SelenideElement searchResult =$(By.xpath("//*[contains(text(),'www.mvideo.ru')]"));
+    private ElementsCollection searchResults = $$("#res div.g");
 
     public void acceptCookies() {
         acceptCookies.click();
@@ -27,13 +32,12 @@ public class SearchPage {
         searchField.pressEnter();
     }
 
-    public void getSearchResults(){
-        searchResults.shouldHave(CollectionCondition.sizeGreaterThanOrEqual(1)).filterBy(text("Selenide: concise UI Tests in Java")).first().click();
-
+    public void checkNumPage() {
+        numPage.shouldBe(visible);
     }
 
-    public void clickSearchResult(){
-        searchResult.click();
+    public void checkSearchResult() {
+        searchResult.shouldBe(visible);
     }
 
 }

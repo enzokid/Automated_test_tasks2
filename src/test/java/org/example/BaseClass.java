@@ -23,7 +23,6 @@ public class BaseClass {
 
     @After
     public void tearDown() {
-        timeout = 3000;
         closeWebDriver();
     }
 }
